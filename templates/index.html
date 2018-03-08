@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration Form</title>
+        <link rel='stylesheet' href='{{url_for("static", filename="style.css")}}'>
+    </head>
+    <body>
+            {% with messages = get_flashed_messages(category_filter=["good"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="good">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <form action="check" method="POST">
+            {% with messages = get_flashed_messages(category_filter=["email"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>Email: <input type="text" name="email"></p>
+            {% with messages = get_flashed_messages(category_filter=["first_name"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>First Name: <input type="text" name="first_name"></p>
+            {% with messages = get_flashed_messages(category_filter=["last_name"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>Last Name: <input type="text" name="last_name"></p>
+            {% with messages = get_flashed_messages(category_filter=["password"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>Password: <input type="text" name="password"></p>
+            {% with messages = get_flashed_messages(category_filter=["confirm_pw"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>Confirm Password: <input type="text" name="confirm_pw"></p>
+            {% with messages = get_flashed_messages(category_filter=["birth_date"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>Birth Date (MM/DD/YYYY): <input type="text" name="birth_date"></p>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
